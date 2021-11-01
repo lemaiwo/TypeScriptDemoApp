@@ -1,18 +1,36 @@
 import MessageBox from "sap/m/MessageBox";
-import Controller from "sap/ui/core/mvc/Controller";
 import AppComponent from "../Component";
+import BaseController from "./BaseController";
+import NorthwindState from "../state/NorthwindState";
+import BusyIndicator from "sap/ui/core/BusyIndicator";
 
 /**
  * @namespace be.wl.TypeScriptDemoApp.controller
  */
-export default class AppController extends Controller {
-
+export default class AppController extends BaseController {
+	private northwindState:NorthwindState;
 	public onInit() : void {
 		// apply content density mode to root view
 		this.getView().addStyleClass((this.getOwnerComponent() as AppComponent).getContentDensityClass());
+
+		this.northwindState = (this.getOwnerComponent() as AppComponent).northwindState;
+		this.getView().setModel(this.northwindState.getModel(), "state");
+		
+		this.northwindState.getSupplier(1);
 	}
 
 	public sayHello() : void {
 		MessageBox.show("Hello World!");
+	}
+
+	public async onSaveSupplier(){
+		BusyIndicator.show(0);
+		try {
+			await this.northwindState.saveSupplier();			
+		} catch (error) {
+			console.error(error);
+		}finally{
+			BusyIndicator.hide();
+		}
 	}
 }
