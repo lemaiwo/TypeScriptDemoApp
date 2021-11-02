@@ -5,7 +5,7 @@ import BaseObject from "./BaseObject";
 /**
  * @namespace be.wl.TypeScriptDemoApp.model
  */
-export default class Supplier extends BaseObject {
+export default class Supplier extends BaseObject<SuppliersEntity> {
     private id: number;
     private name: string;
     private concurrency: number;

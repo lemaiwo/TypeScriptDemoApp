@@ -15,7 +15,6 @@ export default class GridToolState extends BaseState<NorthwindService,nwdata> {
 
     constructor(service: NorthwindService) {
         super(service);
-        this.service = service;
         this.data = {
             supplier:new Supplier()
         }

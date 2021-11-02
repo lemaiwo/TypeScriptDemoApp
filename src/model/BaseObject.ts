@@ -2,7 +2,7 @@ import Object from "sap/ui/base/Object";
 /**
  * @namespace be.wl.TypeScriptDemoApp.model
  */
-export default abstract class BaseObject extends Object {
+export default abstract class BaseObject<T> extends Object {
     private busy = false;
     constructor() {
         super();
@@ -16,4 +16,5 @@ export default abstract class BaseObject extends Object {
         const zero = places - num.toString().length + 1;
         return `${Array(+(zero > 0 && zero)).join("0")}${num}`;
     }
+    public abstract getJSON():T;
 }
