@@ -28,6 +28,7 @@ export default class AppController extends BaseController {
 		try {
 			await this.northwindState.saveSupplier();			
 		} catch (error) {
+			MessageBox.error(error?.message);
 			console.error(error);
 		}finally{
 			BusyIndicator.hide();

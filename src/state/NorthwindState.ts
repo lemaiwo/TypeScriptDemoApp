@@ -28,6 +28,10 @@ export default class GridToolState extends BaseState<NorthwindService,nwdata> {
     }
     public async saveSupplier(){
         const supplier = this.getData().supplier;
+        if(!supplier.isValid()){
+            this.updateModel();
+            throw Error("No valid supplier");
+        }
         const supplierEntity = await this.getService().updateSupplier(supplier.getJSON())
         
         return this.getSupplier(supplier.getId());

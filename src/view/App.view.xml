@@ -39,7 +39,7 @@
 							<f:formElements>
 								<f:FormElement label="Name">
 									<f:fields>
-										<Input value="{state>/supplier/name}" />
+										<Input value="{state>/supplier/name}" valueState="{state>/supplier/nameValueState}"/>
 									</f:fields>
 								</f:FormElement>
 								<f:FormElement label="Concurrency">

@@ -10,6 +10,7 @@ export default class Supplier extends BaseObject<SuppliersEntity> {
     private name: string;
     private concurrency: number;
     private address:Address;
+    private nameValueState="None";
 
     constructor(data?: SuppliersEntity) {
         super();
@@ -23,6 +24,10 @@ export default class Supplier extends BaseObject<SuppliersEntity> {
     }
     public getId():number{
         return this.id;
+    }
+    public isValid():boolean{
+        this.nameValueState = this.name?'None':'Error';
+        return !!this.name;
     }
     public getJSON(): SuppliersEntity {
         return {
