@@ -7,9 +7,9 @@ export type nwdata = {
 }
 
 /**
- * @namespace be.elia.pm.gridtool.state
+ * @namespace be.wl.TypeScriptDemoApp.state
  */
-export default class GridToolState extends BaseState<NorthwindService,nwdata> {
+export default class NorthwindState extends BaseState<NorthwindService,nwdata> {
     protected service: NorthwindService;
     public data: nwdata;
 
